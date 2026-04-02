@@ -25,12 +25,12 @@
             padding: 0;
         }
 
+        /* Hero Section */
         .header-hero {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             background-color: var(--white);
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-bottom: 3rem;
         }
 
         .header-hero img {
@@ -44,15 +44,64 @@
         }
 
         .header-hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--primary);
             margin: 0;
         }
 
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 2rem 1rem;
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background-color: #fcece3;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Content Container */
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 2rem 4rem 2rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .section-card {
@@ -60,15 +109,10 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 2.5rem;
-            margin-bottom: 3rem;
             display: flex;
             flex-wrap: wrap;
             gap: 3rem;
-            align-items: center;
-        }
-
-        .section-card.reverse {
-            flex-direction: row-reverse;
+            align-items: flex-start;
         }
 
         .content-wrap {
@@ -150,110 +194,97 @@
 <body>
 
     <div class="header-hero">
-        <img src="פיקו בכללי.jpeg" alt="פיקו">
+        <img src="תמונה ראשית.jpeg" alt="פיקו">
         <h1>המדריך לפיקו 🐶</h1>
     </div>
 
+    <nav class="tabs-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'tab-food')">🍖 אוכל ופינוקים</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-walks')">🦮 טיולים</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-warning')">🌾 מלענים</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-collar')">📿 קולר</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-home')">🏠 התנהלות בבית</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-games')">🎾 משחקים</button>
+    </nav>
+
     <div class="container">
 
-        <div class="section-card">
-            <div class="content-wrap">
-                <h2>🍖 אוכל</h2>
-                <ul>
-                    <li>פעמיים ביום, בוקר וערב - בכל ארוחה 125 גרם.</li>
-                    <li>יש לתת לו את האוכל במקום שלו או במקום ספציפי קבוע.</li>
-                    <li><strong>זמנים:</strong> יש להרים את הקערה אחרי 10 דקות. מה שהוא אכל - אכל, ומה שלא - להחזיר לשקית (אין צורך להביא לו את השאריות שוב בארוחה השנייה). בדרך כלל הוא מסיים את האוכל שלו.</li>
-                </ul>
-                <div class="alert-box">
-                    <strong>דגש חשוב מאוד 🚨:</strong> לתת לו לאכול אך ורק <strong>אחרי</strong> הטיול, ולהמתין 15-20 דקות. אם הוא אוכל לפני זה, זה עלול לגרום להיפוך קיבה וזה מסוכן מאוד!
+        <div id="tab-food" class="tab-content active">
+            <div class="section-card">
+                <div class="content-wrap">
+                    <h2>🍖 אוכל</h2>
+                    <ul>
+                        <li>פעמיים ביום, בוקר וערב - בכל ארוחה 125 גרם.</li>
+                        <li>יש לתת לו את האוכל במקום שלו או במקום ספציפי קבוע.</li>
+                        <li><strong>זמנים:</strong> יש להרים את הקערה אחרי 10 דקות. מה שהוא אכל - אכל, ומה שלא - להחזיר לשקית (אין צורך להביא לו את השאריות שוב בארוחה השנייה). בדרך כלל הוא מסיים את האוכל שלו.</li>
+                    </ul>
+                    <div class="alert-box">
+                        <strong>דגש חשוב מאוד 🚨:</strong> לתת לו לאכול אך ורק <strong>אחרי</strong> הטיול, ולהמתין 15-20 דקות. אם הוא אוכל לפני זה, זה עלול לגרום להיפוך קיבה וזה מסוכן מאוד!
+                    </div>
+
+                    <h3>🥓 פינוקים (חטיפים)</h3>
+                    <ul>
+                        <li>אפשר לפנק, אבל לנסות לא להגזים.</li>
+                        <li>אם מפנקים אותו, עדיף לתת לו פקודה וקצת אימון לפני כן (כמו: שב, ארצה, למקום, סלאלום, אמצע, סיבוב...).</li>
+                    </ul>
                 </div>
-
-                <h3>🥓 פינוקים (חטיפים)</h3>
-                <ul>
-                    <li>אפשר לפנק, אבל לנסות לא להגזים.</li>
-                    <li>אם מפנקים אותו, עדיף לתת לו פקודה וקצת אימון לפני כן (כמו: שב, ארצה, למקום, סלאלום, אמצע, סיבוב...).</li>
-                </ul>
-            </div>
-            <div class="image-wrap">
-                <img src="הסבר על פינוקים.jpg" alt="הסבר על פינוקים">
-            </div>
-        </div>
-
-        <div class="section-card reverse">
-            <div class="content-wrap">
-                <h2>🦮 טיולים</h2>
-                <ul>
-                    <li>שלושה טיולים ביום - בוקר, צהריים וערב.</li>
-                    <li><strong>בוקר</strong> (8:00 - 9:00): 20 דקות טיול.</li>
-                    <li><strong>צהריים</strong> (15:00 - 16:00): 15 דקות טיול.</li>
-                    <li><strong>ערב</strong> (21:00 - 22:00): 20 דקות טיול.</li>
-                    <li><strong>גמישות:</strong> אפשר להיות דינמיים לפי הימים שלכם. למשל, אם הייתם צריכים להוציא אותו מאוחר בבוקר, נסו להוציא אותו מאוחר גם בערב.</li>
-                    <li><strong>מפגש עם כלבים 🐕:</strong> הוא ממש אוהב לשחק עם כלבים, אבל הוא לא מבין כלבים שלא אוהבים אותו. לכן, שימו לב לכלב השני - אם הוא נראה לכם עצבני או רגוע, ואם הבעלים נראה מרוכז ואחראי. ממש לא חובה לקחת אותו לשחק עם כלבים, הוא ייהנה מאוד גם פשוט להסתובב ולטייל איתכם.</li>
-                    <li><strong>הליכה נכונה:</strong> לא לתת לו למשוך אתכם! אם הוא מושך - יש לעצור, לתת לו משיכה בחזרה, ולקרוא לו לבוא אליכם.</li>
-                    <li><strong>סכנות בדרך ⚠️:</strong> להיזהר מאוד מאוכל על הרצפה או מפיות משומשות (משום מה הוא מאוד אוהב לאכול אותן).</li>
-                </ul>
-            </div>
-            <div class="image-wrap">
-                <img src="פיקו מביט שמח.jpeg" alt="פיקו בטיול">
-                <img src="פיקו משחק עם חברה.jpeg" alt="פיקו משחק עם כלבים">
-            </div>
-        </div>
-
-        <div class="section-card">
-            <div class="content-wrap">
-                <h2>🌾 זהירות - מלענים!</h2>
-                <div class="alert-box">
-                    <strong>זהירות -</strong> להיזהר ממקומות עם מלענים, זה ממש מסוכן לכלבים, זה נכנס להם לפרווה בלי שאנחנו יכולים לראות ומשם נכנס להם לתוך הגוף! אז ממש להיזהר ממקומות שנראים יבשים, עם עשב.
+                <div class="image-wrap">
+                    <img src="הסבר על פינוקים.jpg" alt="הסבר על פינוקים">
                 </div>
-                <br>
-                <a href="https://yogev-heroes.co.il/%d7%9e%d7%9c%d7%a2%d7%a0%d7%99%d7%9d-%d7%94%d7%a1%d7%9b%d7%a0%d7%94-%d7%94%d7%a9%d7%a7%d7%98%d7%94/" target="_blank" class="btn-link">לחצו כאן לקריאה נוספת על סכנת המלענים</a>
             </div>
         </div>
 
-        <div class="section-card reverse">
-            <div class="content-wrap">
-                <h2>📿 קולר</h2>
-                <ul>
-                    <li>הקולר שלו הוא קולר דוקרנים. אין לפתוח אותו בקצוות שלו.</li>
-                    <li><strong>חשוב מאוד ❗:</strong> הקולר הזה מיועד <strong>אך ורק</strong> לטיול. לכן, כשנמצאים בבית חשוב להוריד לו אותו.</li>
-                    <li><strong>בזמן משחק:</strong> אם הוא ממש משתולל ומשחק עם כלב אחר, עדיף להוריד את הקולר - זה מתקן אותו לשווא וגם פחות נעים לו.</li>
-                    <li>אם לא נוח לכם עם הקולר הזה, אפשר להשתמש גם בקולר הרגיל שעליו, אבל קחו בחשבון שהוא כנראה ינסה למשוך יותר.</li>
-                </ul>
-            </div>
-            <div class="image-wrap">
-                <img src="פיקו מביט נחוש.jpeg" alt="פיקו עם קולר">
-            </div>
-        </div>
-
-        <div class="section-card">
-            <div class="content-wrap">
-                <h2>🏠 התנהלות בבית</h2>
-                <ul>
-                    <li><strong>כשאתם לא בבית:</strong> לשים אותו בכלוב. עדיף לשים אותו שם קצת לפני שיוצאים, כדי שלא ירגיש שמיד כשהוא נכנס לכלוב אתם עוזבים את הבית.</li>
-                    <li><strong>יציאה וחזרה הביתה:</strong> כשאתם יוצאים מהבית וחוזרים, לא לגשת אליו ישר אלא להתעלם ממנו. חכו כמה דקות אחרי שהתאפסתם בבית, ורק אז שחררו אותו.</li>
-                    <li><strong>שינה 😴:</strong> בלילה, אם אתם רוצים שהוא ישן לידכם אין עם זה בעיה. רק שימו לב שאין פח פתוח באזור ושהדלת סגורה היטב.</li>
-                </ul>
-            </div>
-            <div class="image-wrap">
-                <img src="תמונה ראשית.jpeg" alt="פיקו בכלוב">
-                <img src="פיקו ישן מקופל.jpeg" alt="פיקו ישן">
-                <img src="פיקו שוכב הפוך מצחיק.jpeg" alt="פיקו שוכב מצחיק">
+        <div id="tab-walks" class="tab-content">
+            <div class="section-card">
+                <div class="content-wrap">
+                    <h2>🦮 טיולים</h2>
+                    <ul>
+                        <li>שלושה טיולים ביום - בוקר, צהריים וערב.</li>
+                        <li><strong>בוקר</strong> (8:00 - 9:00): 20 דקות טיול.</li>
+                        <li><strong>צהריים</strong> (15:00 - 16:00): 15 דקות טיול.</li>
+                        <li><strong>ערב</strong> (21:00 - 22:00): 20 דקות טיול.</li>
+                        <li><strong>גמישות:</strong> אפשר להיות דינמיים לפי הימים שלכם. למשל, אם הייתם צריכים להוציא אותו מאוחר בבוקר, נסו להוציא אותו מאוחר גם בערב.</li>
+                        <li><strong>מפגש עם כלבים 🐕:</strong> הוא ממש אוהב לשחק עם כלבים, אבל הוא לא מבין כלבים שלא אוהבים אותו. לכן, שימו לב לכלב השני - אם הוא נראה לכם עצבני או רגוע, ואם הבעלים נראה מרוכז ואחראי. ממש לא חובה לקחת אותו לשחק עם כלבים, הוא ייהנה מאוד גם פשוט להסתובב ולטייל איתכם.</li>
+                        <li><strong>הליכה נכונה:</strong> לא לתת לו למשוך אתכם! אם הוא מושך - יש לעצור, לתת לו משיכה בחזרה, ולקרוא לו לבוא אליכם.</li>
+                        <li><strong>סכנות בדרך ⚠️:</strong> להיזהר מאוד מאוכל על הרצפה או מפיות משומשות (משום מה הוא מאוד אוהב לאכול אותן).</li>
+                    </ul>
+                </div>
+                <div class="image-wrap">
+                    <img src="פיקו מביט שמח.jpeg" alt="פיקו בטיול">
+                    <img src="פיקו משחק עם חברה.jpeg" alt="פיקו משחק עם כלבים">
+                </div>
             </div>
         </div>
 
-        <div class="section-card reverse">
-            <div class="content-wrap">
-                <h2>🎾 משחקים</h2>
-                <ul>
-                    <li>המשחק הראשי שלו יכול להיות איתו בחוץ כל היום ללא בעיה.</li>
-                    <li><strong>משחק הבאה:</strong> במקומות סגורים וכשהוא לבד, אפשר לזרוק לו כדור או פולר, והוא יודע להחזיר! כדי שיחזיר - לכו אחורה כשאתם מסתכלים אליו ותגידו לו "תביא", הוא ממש נהנה מזה.</li>
-                </ul>
-            </div>
-            <div class="image-wrap">
-                <img src="פיקו עם המשחק בית שלו על הספה.jpeg" alt="פיקו עם המשחק">
+        <div id="tab-warning" class="tab-content">
+            <div class="section-card">
+                <div class="content-wrap">
+                    <h2>🌾 זהירות - מלענים!</h2>
+                    <div class="alert-box">
+                        <strong>זהירות -</strong> להיזהר ממקומות עם מלענים, זה ממש מסוכן לכלבים, זה נכנס להם לפרווה בלי שאנחנו יכולים לראות ומשם נכנס להם לתוך הגוף! אז ממש להיזהר ממקומות שנראים יבשים, עם עשב.
+                    </div>
+                    <br>
+                    <a href="https://yogev-heroes.co.il/%d7%9e%d7%9c%d7%a2%d7%a0%d7%99%d7%9d-%d7%94%d7%a1%d7%9b%d7%a0%d7%94-%d7%94%d7%a9%d7%a7%d7%98%d7%94/" target="_blank" class="btn-link">לחצו כאן לקריאה נוספת על סכנת המלענים</a>
+                </div>
             </div>
         </div>
 
-    </div>
-</body>
-</html>
+        <div id="tab-collar" class="tab-content">
+            <div class="section-card">
+                <div class="content-wrap">
+                    <h2>📿 קולר</h2>
+                    <ul>
+                        <li>הקולר שלו הוא קולר דוקרנים. אין לפתוח אותו בקצוות שלו.</li>
+                        <li><strong>חשוב מאוד ❗:</strong> הקולר הזה מיועד <strong>אך ורק</strong> לטיול. לכן, כשנמצאים בבית חשוב להוריד לו אותו.</li>
+                        <li><strong>בזמן משחק:</strong> אם הוא ממש משתולל ומשחק עם כלב אחר, עדיף להוריד את הקולר - זה מתקן אותו לשווא וגם פחות נעים לו.</li>
+                        <li>אם לא נוח לכם עם הקולר הזה, אפשר להשתמש גם בקולר הרגיל שעליו, אבל קחו בחשבון שהוא כנראה ינסה למשוך יותר.</li>
+                    </ul>
+                </div>
+                <div class="image-wrap">
+                    <img src="פיקו מביט נחוש.jpeg" alt="פיקו עם קולר">
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-home" class="tab-content">
+            <div class="section-
