@@ -287,4 +287,58 @@
         </div>
 
         <div id="tab-home" class="tab-content">
-            <div class="section-
+            <div class="section-card">
+                <div class="content-wrap">
+                    <h2>🏠 התנהלות בבית</h2>
+                    <ul>
+                        <li><strong>כשאתם לא בבית:</strong> לשים אותו בכלוב. עדיף לשים אותו שם קצת לפני שיוצאים, כדי שלא ירגיש שמיד כשהוא נכנס לכלוב אתם עוזבים את הבית.</li>
+                        <li><strong>יציאה וחזרה הביתה:</strong> כשאתם יוצאים מהבית וחוזרים, לא לגשת אליו ישר אלא להתעלם ממנו. חכו כמה דקות אחרי שהתאפסתם בבית, ורק אז שחררו אותו.</li>
+                        <li><strong>שינה 😴:</strong> בלילה, אם אתם רוצים שהוא ישן לידכם אין עם זה בעיה. רק שימו לב שאין פח פתוח באזור ושהדלת סגורה היטב.</li>
+                    </ul>
+                </div>
+                <div class="image-wrap">
+                    <img src="פיקו בכללי.jpeg" alt="פיקו בכללי">
+                    <img src="פיקו ישן מקופל.jpeg" alt="פיקו ישן">
+                    <img src="פיקו שוכב הפוך מצחיק.jpeg" alt="פיקו שוכב מצחיק">
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-games" class="tab-content">
+            <div class="section-card">
+                <div class="content-wrap">
+                    <h2>🎾 משחקים</h2>
+                    <ul>
+                        <li>המשחק הראשי שלו יכול להיות איתו בחוץ כל היום ללא בעיה.</li>
+                        <li><strong>משחק הבאה:</strong> במקומות סגורים וכשהוא לבד, אפשר לזרוק לו כדור או פולר, והוא יודע להחזיר! כדי שיחזיר - לכו אחורה כשאתם מסתכלים אליו ותגידו לו "תביא", הוא ממש נהנה מזה.</li>
+                    </ul>
+                </div>
+                <div class="image-wrap">
+                    <img src="פיקו עם המשחק בית שלו על הספה.jpeg" alt="פיקו עם המשחק">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all elements with class="tab-content"
+            var tabContent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+
+            // Remove the class "active" from all elements with class="tab-btn"
+            var tabLinks = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
