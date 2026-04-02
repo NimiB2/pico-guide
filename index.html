@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -7,312 +6,459 @@
     <title>המדריך לפיקו 🐶</title>
     <style>
         :root {
-            --bg-color: #f8f9fa;
-            --text-main: #2c3e50;
-            --primary: #d35400;
-            --secondary: #e67e22;
-            --danger: #c0392b;
-            --warning: #f39c12;
+            --bg-color: #fef9f5;
+            --text-main: #4a4a4a;
+            --primary: #e67e22;
+            --secondary: #f39c12;
+            --danger: #e74c3c;
+            --warning: #f1c40f;
             --white: #ffffff;
-            --shadow: 0 4px 15px rgba(0,0,0,0.05);
-            --radius: 12px;
+            --shadow-light: 0 4px 15px rgba(230, 126, 34, 0.08);
+            --shadow-strong: 0 8px 25px rgba(230, 126, 34, 0.15);
+            --radius-main: 24px;
+            --radius-small: 12px;
             --highlight: #ffeaa7;
         }
 
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.8;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
-        /* Hero Section - Compact but large image */
-        .header-hero {
-            text-align: center;
-            padding: 1.5rem 1rem;
+        /* Top Bar & Hamburger */
+        .top-bar {
             background-color: var(--white);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar-title {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hamburger-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 5px;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* Side Menu (Sidebar) */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--white);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
             gap: 10px;
         }
 
+        .sidebar.open {
+            right: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px dashed #f1e0d6;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #bdc3c7;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .menu-item {
+            background-color: transparent;
+            color: var(--text-main);
+            border: none;
+            padding: 1rem;
+            border-radius: var(--radius-small);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: right;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-item:hover {
+            background-color: #fdf3ec;
+            color: var(--primary);
+        }
+
+        .menu-item.active {
+            background-color: #fdf3ec;
+            color: var(--primary);
+            border-right: 4px solid var(--primary);
+        }
+
+        /* Hero Section */
+        .header-hero {
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
         .header-hero img {
-            width: 300px;
-            height: 300px;
+            width: 220px;
+            height: 220px;
             object-fit: cover;
             border-radius: 50%;
-            border: 6px solid var(--secondary);
-            box-shadow: var(--shadow);
+            border: 6px solid var(--white);
+            box-shadow: var(--shadow-strong);
         }
 
         .header-hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary);
             margin: 0;
-        }
-
-        /* Tabs Navigation */
-        .tabs-nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 1.5rem 1rem;
-            background-color: var(--bg-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px -6px rgba(0,0,0,0.1);
-        }
-
-        .tab-btn {
-            background-color: var(--white);
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn:hover {
-            background-color: #fcece3;
-            transform: translateY(-2px);
-        }
-
-        .tab-btn.active {
-            background-color: var(--primary);
-            color: var(--white);
-            box-shadow: 0 4px 10px rgba(211, 84, 0, 0.3);
+            text-shadow: 1px 1px 0px rgba(255,255,255,1);
         }
 
         /* Content Container */
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 1.5rem 4rem 1.5rem;
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.4s ease;
+            animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .tab-content.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .section-card {
             background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 2rem;
+            border-radius: var(--radius-main);
+            box-shadow: var(--shadow-light);
+            padding: 2.5rem 2rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            align-items: flex-start;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .content-wrap {
-            flex: 1;
-            min-width: 280px;
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
         .image-wrap {
-            flex: 0.8;
-            min-width: 280px;
             display: flex;
             flex-direction: column;
             gap: 1rem;
             align-items: center;
+            width: 100%;
         }
 
         .image-wrap img {
-            max-width: 100%;
-            border-radius: var(--radius);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            border-radius: var(--radius-small);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            object-fit: cover;
         }
 
         h2 {
             color: var(--primary);
             font-size: 1.8rem;
             margin-top: 0;
-            border-bottom: 3px solid var(--secondary);
-            padding-bottom: 0.5rem;
-            display: inline-block;
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         ul {
-            padding-inline-start: 1.2rem;
+            padding: 0;
+            margin: 0;
             list-style-type: none;
         }
 
         ul li {
-            margin-bottom: 1.2rem;
+            background-color: #fafafa;
+            margin-bottom: 1rem;
+            padding: 1.2rem 1.2rem 1.2rem 2.5rem;
+            border-radius: var(--radius-small);
             font-size: 1.1rem;
             position: relative;
-            padding-right: 1.5rem;
+            border: 1px solid #f1f1f1;
         }
 
-        ul li::before {
+        ul li::after {
             content: "🐾";
             position: absolute;
-            right: 0;
-            top: 2px;
-            font-size: 0.9rem;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+            opacity: 0.5;
         }
 
         /* Text Highlighting */
         .highlight {
             background-color: var(--highlight);
-            padding: 0 6px;
-            border-radius: 4px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            color: #b94a00;
+            display: inline-block;
+        }
+        
+        .time-badge {
+            background-color: #e8f4f8;
+            color: #2980b9;
+            padding: 2px 10px;
+            border-radius: 20px;
             font-weight: bold;
-            color: #d35400;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
         /* Alert Boxes */
         .alert-box {
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: var(--radius-small);
+            margin-top: 2rem;
             font-size: 1.1rem;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .alert-danger {
             background-color: #fdf2f0;
-            border-right: 5px solid var(--danger);
+            border: 2px solid #fadbd8;
+            border-right: 6px solid var(--danger);
         }
 
-        .alert-danger strong { color: var(--danger); }
+        .alert-danger strong { 
+            color: var(--danger); 
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         .alert-warning {
             background-color: #fffaf0;
-            border-right: 5px solid var(--warning);
+            border: 2px solid #fdebd0;
+            border-right: 6px solid #f39c12;
         }
 
-        .alert-warning strong { color: #d68910; }
+        .alert-warning strong { 
+            color: #d68910;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         .btn-link {
-            display: block;
-            background-color: var(--danger);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--danger), #c0392b);
             color: var(--white);
-            padding: 1rem;
+            padding: 1.2rem;
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
+            font-size: 1.1rem;
             margin-top: 1.5rem;
-            transition: opacity 0.3s ease;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
-        }
-
-        .btn-link:hover {
-            opacity: 0.85;
-            transform: scale(0.98);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
         }
     </style>
 </head>
 <body>
 
-    <div class="header-hero">
-        <img src="תמונה ראשית.jpeg" alt="פיקו">
-        <h1>המדריך לפיקו 🐶</h1>
+    <div class="top-bar">
+        <h2 class="top-bar-title">🐶 המדריך לפיקו</h2>
+        <button class="hamburger-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 
-    <nav class="tabs-nav">
-        <button class="tab-btn active" onclick="openTab(event, 'tab-food')">🍖 אוכל</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-treats')">🥓 פינוקים</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-walks')">🦮 טיולים</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-collar')">📿 קולר</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-home')">🏠 התנהלות בבית</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-games')">🎾 משחקים</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-warning')">🌾 מלענים</button>
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3 style="margin: 0; color: var(--primary);">תפריט ניווט 🗺️</h3>
+            <button class="close-btn" onclick="toggleMenu()">&times;</button>
+        </div>
+        <button class="menu-item active" onclick="openTab('tab-food', this)">🍖 אוכל</button>
+        <button class="menu-item" onclick="openTab('tab-treats', this)">🥓 פינוקים</button>
+        <button class="menu-item" onclick="openTab('tab-walks', this)">🦮 טיולים</button>
+        <button class="menu-item" onclick="openTab('tab-collar', this)">📿 קולר</button>
+        <button class="menu-item" onclick="openTab('tab-home', this)">🏠 בבית</button>
+        <button class="menu-item" onclick="openTab('tab-games', this)">🎾 משחקים</button>
+        <button class="menu-item" onclick="openTab('tab-warning', this)">🌾 מלענים</button>
     </nav>
+
+    <div class="header-hero">
+        <img src="תמונה ראשית.jpeg" alt="פיקו הכלב החמוד">
+        <h1>שלום, אני פיקו! 👋</h1>
+    </div>
 
     <div class="container">
 
         <div id="tab-food" class="tab-content active">
             <div class="section-card">
-                <div class="content-wrap">
-                    <h2>🍖 תזונה והאכלה</h2>
-                    <ul>
-                        <li>פעמיים ביום, בוקר וערב - בכל ארוחה <span class="highlight">125 גרם</span>.</li>
-                        <li>יש לתת לו את האוכל במקום שלו או במקום ספציפי קבוע.</li>
-                        <li><strong>זמנים:</strong> יש להרים את הקערה אחרי <span class="highlight">10 דקות</span>. מה שהוא אכל - אכל, ומה שלא - להחזיר לשקית (אין צורך להביא לו את השאריות שוב בארוחה השנייה). בדרך כלל הוא מסיים את האוכל שלו.</li>
-                    </ul>
-                    <div class="alert-box alert-danger">
-                        <strong>דגש חשוב מאוד 🚨:</strong> לתת לו לאכול אך ורק <strong>אחרי</strong> הטיול, ולהמתין 15-20 דקות. אם הוא אוכל לפני הטיול, זה עלול לגרום להיפוך קיבה וזה מסוכן מאוד!
-                    </div>
+                <h2>🍖 תזונה והאכלה</h2>
+                <ul>
+                    <li>פעמיים ביום, בוקר וערב - בכל ארוחה <span class="highlight">125 גרם</span> 🥣.</li>
+                    <li>יש לתת לו את האוכל במקום שלו או במקום ספציפי קבוע 🏠.</li>
+                    <li><strong>זמנים ⏱️:</strong> יש להרים את הקערה אחרי <span class="highlight">10 דקות</span>. מה שהוא אכל - אכל, ומה שלא - להחזיר לשקית (אין צורך להביא לו את השאריות שוב בארוחה השנייה). בדרך כלל הוא מסיים הכל! 😋</li>
+                </ul>
+                <div class="alert-box alert-danger">
+                    <strong>🚨 סכנת חיים - דגש חשוב מאוד!</strong> 
+                    <span>לתת לו לאכול אך ורק <strong>אחרי</strong> הטיול, ולהמתין <span class="highlight">15-20 דקות</span>. אם הוא אוכל לפני הטיול, זה עלול לגרום להיפוך קיבה וזה מסוכן מאוד! ⚠️</span>
                 </div>
             </div>
         </div>
 
         <div id="tab-treats" class="tab-content">
             <div class="section-card">
-                <div class="content-wrap">
-                    <h2>🥓 פינוקים וחטיפים</h2>
-                    <ul>
-                        <li>אפשר לפנק, אבל לנסות <span class="highlight">לא להגזים</span> בכמויות.</li>
-                        <li>אם מפנקים אותו, עדיף לתת לו פקודה וקצת אימון לפני כן. <br>
-                        <strong>פקודות לדוגמה:</strong> שב, ארצה, למקום, סלאלום, אמצע, סיבוב...</li>
-                    </ul>
-                </div>
+                <h2>🥓 פינוקים וחטיפים</h2>
+                <ul>
+                    <li>אפשר לפנק, אבל לנסות <span class="highlight">לא להגזים</span> בכמויות 🤏.</li>
+                    <li>אם מפנקים אותו, עדיף לתת לו פקודה וקצת אימון לפני כן 🎓. <br><br>
+                    <strong>פקודות שהוא מכיר 🧠:</strong><br> שב, ארצה, למקום, סלאלום, אמצע, סיבוב...</li>
+                </ul>
                 <div class="image-wrap">
-                    <img src="הסבר על פינוקים.jpg" alt="הסבר על פינוקים">
+                    <img src="הסבר על פינוקים.jpg" alt="פינוקים לפיקו">
                 </div>
             </div>
         </div>
 
         <div id="tab-walks" class="tab-content">
             <div class="section-card">
-                <div class="content-wrap">
-                    <h2>🦮 שגרת טיולים</h2>
-                    <ul>
-                        <li>שלושה טיולים ביום - בוקר, צהריים וערב.</li>
-                        <li><strong>בוקר:</strong> <span class="highlight">8:00 - 9:00</span> | טיול של 20 דקות.</li>
-                        <li><strong>צהריים:</strong> <span class="highlight">15:00 - 16:00</span> | טיול של 15 דקות.</li>
-                        <li><strong>ערב:</strong> <span class="highlight">21:00 - 22:00</span> | טיול של 20 דקות.</li>
-                        <li><strong>גמישות:</strong> אפשר להיות דינמיים לפי הימים שלכם. למשל, אם הייתם צריכים להוציא אותו מאוחר בבוקר, נסו להוציא אותו מאוחר גם בערב.</li>
-                        <li><strong>הליכה נכונה:</strong> <span class="highlight">לא לתת לו למשוך אתכם!</span> אם הוא מושך - יש לעצור, לתת לו משיכה בחזרה, ולקרוא לו לבוא אליכם.</li>
-                        <li><strong>מפגש עם כלבים 🐕:</strong> הוא ממש אוהב לשחק עם כלבים, אבל הוא לא מבין כלבים שלא אוהבים אותו. לכן, שימו לב לכלב השני - אם הוא נראה לכם עצבני או רגוע, ואם הבעלים נראה מרוכז ואחראי. ממש לא חובה לקחת אותו לשחק עם כלבים, הוא ייהנה מאוד גם פשוט להסתובב ולטייל איתכם.</li>
-                    </ul>
-                    <div class="alert-box alert-warning">
-                        <strong>סכנות בדרך ⚠️:</strong> להיזהר מאוד מאוכל על הרצפה או מפיות משומשות (משום מה הוא מאוד אוהב לאכול אותן).
-                    </div>
+                <h2>🦮 שגרת טיולים</h2>
+                <ul>
+                    <li>שלושה טיולים ביום - בוקר ☀️, צהריים 🌤️ וערב 🌙.</li>
+                    <li><strong>בוקר:</strong> <span class="time-badge">🕗 8:00 - 9:00</span> | טיול של <span class="highlight">20 דקות</span>.</li>
+                    <li><strong>צהריים:</strong> <span class="time-badge">🕒 15:00 - 16:00</span> | טיול של <span class="highlight">15 דקות</span>.</li>
+                    <li><strong>ערב:</strong> <span class="time-badge">🕘 21:00 - 22:00</span> | טיול של <span class="highlight">20 דקות</span>.</li>
+                    <li><strong>גמישות 🧘:</strong> אפשר להיות דינמיים לפי הימים שלכם. למשל, אם הוצאתם אותו מאוחר בבוקר, נסו להוציא אותו מאוחר גם בערב.</li>
+                    <li><strong>הליכה נכונה 🚶:</strong> <span class="highlight">לא לתת לו למשוך אתכם!</span> 🛑 אם הוא מושך - יש לעצור, לתת לו משיכה קלה בחזרה, ולקרוא לו לבוא אליכם.</li>
+                    <li><strong>מפגש עם כלבים 🐕‍🦺:</strong> הוא ממש אוהב לשחק עם כלבים, אבל הוא לא מבין כלבים שלא אוהבים אותו 😅. לכן, שימו לב לכלב השני (עצבני/רגוע) ולוודא שהבעלים מרוכז. <br>ממש לא חובה לקחת אותו לשחק, הוא ייהנה מאוד גם פשוט לטייל איתכם! ❤️</li>
+                </ul>
+                <div class="alert-box alert-warning">
+                    <strong>⚠️ סכנות בדרך!</strong> 
+                    <span>להיזהר מאוד מאוכל על הרצפה או <strong>מפיות משומשות</strong> 🧻 (משום מה הוא ממש אוהב לאכול אותן).</span>
                 </div>
                 <div class="image-wrap">
-                    <img src="פיקו מביט שמח.jpeg" alt="פיקו בטיול">
-                    <img src="פיקו משחק עם חברה.jpeg" alt="פיקו משחק עם כלבים">
+                    <img src="פיקו מביט שמח.jpeg" alt="פיקו שמח בטיול">
+                    <img src="פיקו משחק עם חברה.jpeg" alt="פיקו משחק עם חברים">
                 </div>
             </div>
         </div>
 
         <div id="tab-collar" class="tab-content">
             <div class="section-card">
-                <div class="content-wrap">
-                    <h2>📿 קולר וציוד</h2>
-                    <ul>
-                        <li>הקולר שלו הוא קולר דוקרנים. <span class="highlight">אין לפתוח אותו</span> בקצוות שלו.</li>
-                        <li><strong>בזמן משחק:</strong> אם הוא ממש משתולל ומשחק עם כלב אחר, עדיף להוריד את הקולר - זה מתקן אותו לשווא וגם פחות נעים לו.</li>
-                        <li>אם לא נוח לכם עם הקולר הזה, אפשר להשתמש גם בקולר הרגיל שעליו, אבל קחו בחשבון שהוא כנראה ינסה למשוך יותר.</li>
-                    </ul>
-                    <div class="alert-box alert-warning">
-                        <strong>חשוב מאוד ❗:</strong> הקולר הזה מיועד <strong>אך ורק</strong> לטיול. לכן, כשנמצאים בבית חובה להוריד לו אותו.
-                    </div>
+                <h2>📿 קולר וציוד</h2>
+                <ul>
+                    <li>הקולר שלו הוא קולר דוקרנים. <span class="highlight">אין לפתוח אותו</span> בקצוות שלו 🔒.</li>
+                    <li><strong>בזמן משחק 🎾:</strong> אם הוא ממש משתולל ומשחק עם כלב אחר, עדיף להוריד את הקולר - זה מתקן אותו לשווא וגם פחות נעים לו.</li>
+                    <li><strong>אופציה חלופית:</strong> אם לא נוח לכם עם קולר הדוקרנים, אפשר להשתמש גם בקולר הרגיל שעליו, אבל קחו בחשבון שעם הרגיל הוא כנראה ינסה למשוך יותר 🐕.</li>
+                </ul>
+                <div class="alert-box alert-warning">
+                    <strong>❗ חובה בבית:</strong> 
+                    <span>הקולר הזה מיועד <strong>אך ורק לטיול</strong>. לכן, כשנכנסים הביתה חובה להוריד לו אותו! 🏠</span>
                 </div>
                 <div class="image-wrap">
                     <img src="פיקו מביט נחוש.jpeg" alt="פיקו עם קולר">
@@ -322,73 +468,88 @@
 
         <div id="tab-home" class="tab-content">
             <div class="section-card">
-                <div class="content-wrap">
-                    <h2>🏠 התנהלות בבית</h2>
-                    <ul>
-                        <li><strong>כשאתם לא בבית:</strong> לשים אותו בכלוב. עדיף לשים אותו שם קצת לפני שיוצאים, כדי שלא ירגיש שמיד כשהוא נכנס לכלוב אתם עוזבים את הבית.</li>
-                        <li><strong>יציאה וחזרה הביתה:</strong> כשאתם יוצאים מהבית וחוזרים, <span class="highlight">לא לגשת אליו ישר אלא להתעלם ממנו</span>. חכו כמה דקות אחרי שהתאפסתם בבית, ורק אז שחררו אותו.</li>
-                        <li><strong>שינה 😴:</strong> בלילה, אם אתם רוצים שהוא ישן לידכם אין עם זה בעיה. רק שימו לב שאין פח פתוח באזור ושהדלת סגורה היטב.</li>
-                    </ul>
-                </div>
+                <h2>🏠 התנהלות בבית</h2>
+                <ul>
+                    <li><strong>כשאתם לא בבית 🚪:</strong> לשים אותו בכלוב. עדיף לשים אותו שם קצת <strong>לפני</strong> שיוצאים, כדי שלא ירגיש שמיד כשהוא נכנס לכלוב אתם עוזבים.</li>
+                    <li><strong>יציאה וחזרה הביתה 🔑:</strong> כשיוצאים וחוזרים, <span class="highlight">לא לגשת אליו ישר אלא להתעלם ממנו</span> 🙈. חכו כמה דקות אחרי שהתאפסתם בבית, ורק אז שחררו אותו.</li>
+                    <li><strong>שינה 😴:</strong> בלילה, אין בעיה שיישן לידכם. רק שימו לב שאין פח זבל פתוח באזור 🗑️ ושהדלת סגורה היטב.</li>
+                </ul>
                 <div class="image-wrap">
-                    <img src="פיקו בכללי.jpeg" alt="פיקו בכללי">
-                    <img src="פיקו ישן מקופל.jpeg" alt="פיקו ישן">
-                    <img src="פיקו שוכב הפוך מצחיק.jpeg" alt="פיקו שוכב מצחיק">
+                    <img src="פיקו בכללי.jpeg" alt="פיקו נח">
+                    <img src="פיקו ישן מקופל.jpeg" alt="פיקו ישן מתוק">
+                    <img src="פיקו שוכב הפוך מצחיק.jpeg" alt="פיקו שוכב הפוך">
                 </div>
             </div>
         </div>
 
         <div id="tab-games" class="tab-content">
             <div class="section-card">
-                <div class="content-wrap">
-                    <h2>🎾 משחקים</h2>
-                    <ul>
-                        <li>המשחק הראשי שלו יכול להיות איתו בחוץ כל היום ללא בעיה.</li>
-                        <li><strong>משחק הבאה:</strong> במקומות סגורים וכשהוא לבד, אפשר לזרוק לו כדור או פולר, והוא יודע להחזיר! <br>כדי שיחזיר - לכו אחורה כשאתם מסתכלים אליו ותגידו לו <span class="highlight">"תביא"</span>, הוא ממש נהנה מזה.</li>
-                    </ul>
-                </div>
+                <h2>🎾 משחקים וכיף</h2>
+                <ul>
+                    <li>המשחק הראשי שלו יכול להיות איתו בחוץ כל היום ללא שום בעיה ☀️.</li>
+                    <li><strong>משחק הבאה 🥎:</strong> במקומות סגורים וכשהוא לבד, אפשר לזרוק לו כדור או פולר, והוא יודע להחזיר! <br><br><strong>איך עושים את זה? 🤔</strong><br> לכו אחורה כשאתם מסתכלים אליו ותגידו לו <span class="highlight">"תביא!"</span>. הוא ממש נהנה מזה! 🥰</li>
+                </ul>
                 <div class="image-wrap">
-                    <img src="פיקו עם המשחק בית שלו על הספה.jpeg" alt="פיקו עם המשחק">
+                    <img src="פיקו עם המשחק בית שלו על הספה.jpeg" alt="פיקו משחק בבית">
                 </div>
             </div>
         </div>
 
         <div id="tab-warning" class="tab-content">
             <div class="section-card">
-                <div class="content-wrap">
-                    <h2>🌾 סכנה - מלענים!</h2>
-                    <div class="alert-box alert-danger">
-                        <strong>זהירות -</strong> להיזהר ממקומות עם מלענים (שיבולים/עשב יבש), זה ממש מסוכן לכלבים! <br>זה נכנס להם לפרווה בלי שאנחנו יכולים לראות ומשם נכנס להם לתוך הגוף. אז ממש <strong>להיזהר ולהימנע</strong> ממקומות שנראים יבשים.
-                    </div>
-                    <a href="https://yogev-heroes.co.il/%d7%9e%d7%9c%d7%a2%d7%a0%d7%99%d7%9d-%d7%94%d7%a1%d7%9b%d7%a0%d7%94-%d7%94%d7%a9%d7%a7%d7%98%d7%94/" target="_blank" class="btn-link">🔗 לחצו כאן לקריאה נוספת על סכנת המלענים</a>
+                <h2>🌾 סכנה רפואית - מלענים!</h2>
+                <div class="alert-box alert-danger">
+                    <strong>🛑 סכנה חמורה לכלבים!</strong> 
+                    <span>יש להיזהר מאוד ממקומות עם מלענים (שיבולים/עשב יבש). <br><br>המלענים נכנסים לפרווה בלי שאנחנו יכולים לראות, ומשם חודרים לתוך הגוף וגורמים לנזק כבד! <br><br><strong>חובה להימנע לחלוטין מטיולים באזורים שנראים יבשים או מלאים בעשבייה.</strong> 🚫🌱</span>
                 </div>
+                <a href="https://yogev-heroes.co.il/%d7%9e%d7%9c%d7%a2%d7%a0%d7%99%d7%9d-%d7%94%d7%a1%d7%9b%d7%a0%d7%94-%d7%94%d7%a9%d7%a7%d7%98%d7%94/" target="_blank" class="btn-link">
+                    <span>📖 לחצו לקריאה נוספת על סכנת המלענים</span>
+                </a>
             </div>
         </div>
 
     </div>
 
     <script>
-        function openTab(evt, tabName) {
+        function toggleMenu() {
+            var sidebar = document.getElementById("sidebar");
+            var overlay = document.getElementById("overlay");
+            
+            if (sidebar.classList.contains("open")) {
+                sidebar.classList.remove("open");
+                overlay.classList.remove("active");
+            } else {
+                sidebar.classList.add("open");
+                overlay.classList.add("active");
+            }
+        }
+
+        function openTab(tabName, element) {
+            // Hide all tab contents
             var tabContent = document.getElementsByClassName("tab-content");
             for (var i = 0; i < tabContent.length; i++) {
                 tabContent[i].classList.remove("active");
             }
 
-            var tabLinks = document.getElementsByClassName("tab-btn");
-            for (var i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove("active");
+            // Remove active class from all menu items
+            var menuItems = document.getElementsByClassName("menu-item");
+            for (var i = 0; i < menuItems.length; i++) {
+                menuItems[i].classList.remove("active");
             }
 
+            // Show current tab and add active class to clicked button
             document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            element.classList.add("active");
             
-            // Scroll to top of content slightly smoothly
+            // Close menu
+            toggleMenu();
+
+            // Scroll to top of content smoothly
             window.scrollTo({
-                top: document.querySelector('.tabs-nav').offsetTop - 10,
+                top: 0,
                 behavior: 'smooth'
             });
         }
     </script>
 </body>
 </html>
-```
