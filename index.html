@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>המדריך לפיקו 🐶</title>
+    <style>
+        :root {
+            --bg-color: #fbf9f6;
+            --text-main: #333333;
+            --primary: #d35400;
+            --secondary: #e67e22;
+            --danger: #c0392b;
+            --white: #ffffff;
+            --shadow: 0 8px 20px rgba(0,0,0,0.08);
+            --radius: 16px;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .header-hero img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--secondary);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .header-hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem 2rem;
+        }
+
+        .section-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .section-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .content-wrap {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .image-wrap {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .image-wrap img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-top: 0;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        ul {
+            padding-inline-start: 1.2rem;
+            list-style-type: square;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .alert-box {
+            background-color: #fdf2f0;
+            border-right: 5px solid var(--danger);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .alert-box strong {
+            color: var(--danger);
+        }
+
+        .btn-link {
+            display: inline-block;
+            background-color: var(--danger);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: opacity 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-link:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-hero">
+        <img src="פיקו בכללי.jpeg" alt="פיקו">
+        <h1>המדריך לפיקו 🐶</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="section-card">
+            <div class="content-wrap">
+                <h2>🍖 אוכל</h2>
+                <ul>
+                    <li>פעמיים ביום, בוקר וערב - בכל ארוחה 125 גרם.</li>
+                    <li>יש לתת לו את האוכל במקום שלו או במקום ספציפי קבוע.</li>
+                    <li><strong>זמנים:</strong> יש להרים את הקערה אחרי 10 דקות. מה שהוא אכל - אכל, ומה שלא - להחזיר לשקית (אין צורך להביא לו את השאריות שוב בארוחה השנייה). בדרך כלל הוא מסיים את האוכל שלו.</li>
+                </ul>
+                <div class="alert-box">
+                    <strong>דגש חשוב מאוד 🚨:</strong> לתת לו לאכול אך ורק <strong>אחרי</strong> הטיול, ולהמתין 15-20 דקות. אם הוא אוכל לפני זה, זה עלול לגרום להיפוך קיבה וזה מסוכן מאוד!
+                </div>
+
+                <h3>🥓 פינוקים (חטיפים)</h3>
+                <ul>
+                    <li>אפשר לפנק, אבל לנסות לא להגזים.</li>
+                    <li>אם מפנקים אותו, עדיף לתת לו פקודה וקצת אימון לפני כן (כמו: שב, ארצה, למקום, סלאלום, אמצע, סיבוב...).</li>
+                </ul>
+            </div>
+            <div class="image-wrap">
+                <img src="הסבר על פינוקים.jpg" alt="הסבר על פינוקים">
+            </div>
+        </div>
+
+        <div class="section-card reverse">
+            <div class="content-wrap">
+                <h2>🦮 טיולים</h2>
+                <ul>
+                    <li>שלושה טיולים ביום - בוקר, צהריים וערב.</li>
+                    <li><strong>בוקר</strong> (8:00 - 9:00): 20 דקות טיול.</li>
+                    <li><strong>צהריים</strong> (15:00 - 16:00): 15 דקות טיול.</li>
+                    <li><strong>ערב</strong> (21:00 - 22:00): 20 דקות טיול.</li>
+                    <li><strong>גמישות:</strong> אפשר להיות דינמיים לפי הימים שלכם. למשל, אם הייתם צריכים להוציא אותו מאוחר בבוקר, נסו להוציא אותו מאוחר גם בערב.</li>
+                    <li><strong>מפגש עם כלבים 🐕:</strong> הוא ממש אוהב לשחק עם כלבים, אבל הוא לא מבין כלבים שלא אוהבים אותו. לכן, שימו לב לכלב השני - אם הוא נראה לכם עצבני או רגוע, ואם הבעלים נראה מרוכז ואחראי. ממש לא חובה לקחת אותו לשחק עם כלבים, הוא ייהנה מאוד גם פשוט להסתובב ולטייל איתכם.</li>
+                    <li><strong>הליכה נכונה:</strong> לא לתת לו למשוך אתכם! אם הוא מושך - יש לעצור, לתת לו משיכה בחזרה, ולקרוא לו לבוא אליכם.</li>
+                    <li><strong>סכנות בדרך ⚠️:</strong> להיזהר מאוד מאוכל על הרצפה או מפיות משומשות (משום מה הוא מאוד אוהב לאכול אותן).</li>
+                </ul>
+            </div>
+            <div class="image-wrap">
+                <img src="פיקו מביט שמח.jpeg" alt="פיקו בטיול">
+                <img src="פיקו משחק עם חברה.jpeg" alt="פיקו משחק עם כלבים">
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="content-wrap">
+                <h2>🌾 זהירות - מלענים!</h2>
+                <div class="alert-box">
+                    <strong>זהירות -</strong> להיזהר ממקומות עם מלענים, זה ממש מסוכן לכלבים, זה נכנס להם לפרווה בלי שאנחנו יכולים לראות ומשם נכנס להם לתוך הגוף! אז ממש להיזהר ממקומות שנראים יבשים, עם עשב.
+                </div>
+                <br>
+                <a href="https://yogev-heroes.co.il/%d7%9e%d7%9c%d7%a2%d7%a0%d7%99%d7%9d-%d7%94%d7%a1%d7%9b%d7%a0%d7%94-%d7%94%d7%a9%d7%a7%d7%98%d7%94/" target="_blank" class="btn-link">לחצו כאן לקריאה נוספת על סכנת המלענים</a>
+            </div>
+        </div>
+
+        <div class="section-card reverse">
+            <div class="content-wrap">
+                <h2>📿 קולר</h2>
+                <ul>
+                    <li>הקולר שלו הוא קולר דוקרנים. אין לפתוח אותו בקצוות שלו.</li>
+                    <li><strong>חשוב מאוד ❗:</strong> הקולר הזה מיועד <strong>אך ורק</strong> לטיול. לכן, כשנמצאים בבית חשוב להוריד לו אותו.</li>
+                    <li><strong>בזמן משחק:</strong> אם הוא ממש משתולל ומשחק עם כלב אחר, עדיף להוריד את הקולר - זה מתקן אותו לשווא וגם פחות נעים לו.</li>
+                    <li>אם לא נוח לכם עם הקולר הזה, אפשר להשתמש גם בקולר הרגיל שעליו, אבל קחו בחשבון שהוא כנראה ינסה למשוך יותר.</li>
+                </ul>
+            </div>
+            <div class="image-wrap">
+                <img src="פיקו מביט נחוש.jpeg" alt="פיקו עם קולר">
+            </div>
+        </div>
+
+        <div class="section-card">
+            <div class="content-wrap">
+                <h2>🏠 התנהלות בבית</h2>
+                <ul>
+                    <li><strong>כשאתם לא בבית:</strong> לשים אותו בכלוב. עדיף לשים אותו שם קצת לפני שיוצאים, כדי שלא ירגיש שמיד כשהוא נכנס לכלוב אתם עוזבים את הבית.</li>
+                    <li><strong>יציאה וחזרה הביתה:</strong> כשאתם יוצאים מהבית וחוזרים, לא לגשת אליו ישר אלא להתעלם ממנו. חכו כמה דקות אחרי שהתאפסתם בבית, ורק אז שחררו אותו.</li>
+                    <li><strong>שינה 😴:</strong> בלילה, אם אתם רוצים שהוא ישן לידכם אין עם זה בעיה. רק שימו לב שאין פח פתוח באזור ושהדלת סגורה היטב.</li>
+                </ul>
+            </div>
+            <div class="image-wrap">
+                <img src="תמונה ראשית.jpeg" alt="פיקו בכלוב">
+                <img src="פיקו ישן מקופל.jpeg" alt="פיקו ישן">
+                <img src="פיקו שוכב הפוך מצחיק.jpeg" alt="פיקו שוכב מצחיק">
+            </div>
+        </div>
+
+        <div class="section-card reverse">
+            <div class="content-wrap">
+                <h2>🎾 משחקים</h2>
+                <ul>
+                    <li>המשחק הראשי שלו יכול להיות איתו בחוץ כל היום ללא בעיה.</li>
+                    <li><strong>משחק הבאה:</strong> במקומות סגורים וכשהוא לבד, אפשר לזרוק לו כדור או פולר, והוא יודע להחזיר! כדי שיחזיר - לכו אחורה כשאתם מסתכלים אליו ותגידו לו "תביא", הוא ממש נהנה מזה.</li>
+                </ul>
+            </div>
+            <div class="image-wrap">
+                <img src="פיקו עם המשחק בית שלו על הספה.jpeg" alt="פיקו עם המשחק">
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
